@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="bingo-table">
+	</div>
+	<script type="text/javascript">
+		function shuffle(o) { 
+    		for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    		return o;
+		};
+
+		var words = [
+			'Всем хорошего дня','Слабнюк','График профилактик',
+			'Всем хорошего дня','Слабнюк','График профилактик',
+			'Всем хорошего дня','Слабнюк','График профилактик'];
+		words = shuffle(words);
+		var html = '<table>';
+		var wordsCount = words.length;
+		var wordsInRow = 3;
+		for (var i = 0; i < wordsCount; i++)
+		{
+			if (i % wordsInRow === 0)
+			{
+				html += '</tr><tr>';
+			}
+			html += '<td>' + words[i] + '</td>';
+		}
+		html += '</table>'
+		var bingoTable = document.getElementById('bingo-table');
+		bingoTable.innerHTML = html;
+	</script>
+</body>
+</html>
