@@ -1,37 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<div id="bingo-table">
-	</div>
-	<script type="text/javascript">
-		function shuffle(o) { 
-    		for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    		return o;
-		};
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
 
-		var words = [
-			'Всем хорошего дня','Слабнюк','График профилактик',
-			'Всем хорошего дня','Слабнюк','График профилактик',
-			'Всем хорошего дня','Слабнюк','График профилактик'];
-		words = shuffle(words);
-		var html = '<table>';
-		var wordsCount = words.length;
-		var wordsInRow = 3;
-		for (var i = 0; i < wordsCount; i++)
-		{
-			if (i % wordsInRow === 0)
-			{
-				html += '</tr><tr>';
-			}
-			html += '<td>' + words[i] + '</td>';
-		}
-		html += '</table>'
-		var bingoTable = document.getElementById('bingo-table');
-		bingoTable.innerHTML = html;
-	</script>
-</body>
+    <title>Starter Template for Bootstrap</title>
+    <!-- <link rel="stylesheet" type="text/css" media="print" href="styles/print.css" /> -->
+    <style type="text/css">
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .section-to-print, .section-to-print * {
+          visibility: visible;
+        }
+        .section-to-print {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }    
+    </style>
+
+    <!-- Bootstrap core CSS -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">ЦИС Бинго</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="bingo-settings">            
+            <form class="form-inline" role="form" class="no-print">  
+              <div class="form-group">
+          		  <label for="rowsCount" class="control-label">Выражений в строке: </label> 
+                <input type="number" min="1" id="rowsCount" value="3" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label for="cardsCount" class="control-label">Карточек: </label>
+                <input type="number" min="1" id="cardsCount" value="3" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <button id="createCards" class="btn btn-default">Создать карточки</button>
+                <button type="button" click="javascript:window.print()" class="btn btn-default no-print">
+                  <span class="glyphicon glyphicon-print"></span>
+                </button>
+              </div>       
+            </form>
+          </div>
+      		<div id="bingoTable" class="section-to-print">		
+      		</div>
+        </div>
+      </div>
+    </div><!-- /.container -->
+    <script src="lib/jquery-2.1.1.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/bingo.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function()
+      {
+        bindEvents();
+        createCards();
+      });
+    </script>
+  </body>
 </html>

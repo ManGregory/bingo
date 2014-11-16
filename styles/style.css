@@ -1,0 +1,27 @@
+body {
+	padding-top: 50px;
+}
+
+.bingo-settings {
+	margin-top: 10px;
+}
+
+table {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	text-align: center;	
+	height: 100%;
+	float: left;
+}
+
+.table-bordered {
+	border: 2px solid;
+}
+
+td {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black !important;
+	padding: 5px;
+}
